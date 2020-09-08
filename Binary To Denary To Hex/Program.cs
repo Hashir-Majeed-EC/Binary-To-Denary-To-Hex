@@ -7,7 +7,7 @@ namespace Binary_To_Denary_To_Hex
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine(DecToHex(7291));
         }
 
         //WORKING for multiple bytes
@@ -27,16 +27,30 @@ namespace Binary_To_Denary_To_Hex
             return total;
         }
 
-        //NOT working for multiple bytes
+        //WORKING for multiple bytes
         static string DecToHex(int dec)
         {
-            int div = dec / 16;
+            /*int div = dec / 16;
             string hex = "";
             char[] vals = new char[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
             
             hex += Convert.ToString(vals[div]);
             hex += Convert.ToString(vals[dec % 16]);
-           
+           */
+            char[] vals = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+            string temp = "";
+            string hex = "";
+            while (dec > 0)
+            {
+                temp += Convert.ToString(vals[dec % 16]);
+                dec /= 16;
+            }
+            
+            for (int i = temp.Length - 1; i >= 0; i--)
+            {
+                hex += Convert.ToString(temp[i]);
+            }
+
             return hex;
         }
 
