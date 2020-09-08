@@ -7,14 +7,10 @@ namespace Binary_To_Denary_To_Hex
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine(DecToHex(255));
-            Console.WriteLine(DecToHex(16));
-            Console.WriteLine(HexToBin("FF"));
-            Console.WriteLine(HexToBin("27"));
-            Console.WriteLine(HexToBin("A2"));
+            
         }
 
+        //WORKING for multiple bytes
         static int BinToDec(string binary)
         {
             int position = 0;
@@ -31,6 +27,7 @@ namespace Binary_To_Denary_To_Hex
             return total;
         }
 
+        //NOT working for multiple bytes
         static string DecToHex(int dec)
         {
             int div = dec / 16;
@@ -43,6 +40,7 @@ namespace Binary_To_Denary_To_Hex
             return hex;
         }
 
+        //WORKING for Multiple Bytes
         static string HexToBin(string hex)
         {
             string binary = "";
@@ -73,5 +71,9 @@ namespace Binary_To_Denary_To_Hex
             }
             return binary;
         }
+
+        static string BinToHex(string binary) => DecToHex(Convert.ToInt32(BinToDec(binary)));
+        static string DecToBin(int dec) => HexToBin(DecToHex(dec));
+        static int HexToDec(string hex) => BinToDec(HexToBin(hex));
     }
 }
